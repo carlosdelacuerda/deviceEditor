@@ -1,0 +1,22 @@
+<mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side">
+      <ul>
+        <li>
+          <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
+        </li>
+        <li>
+          <a routerLink="/devices" routerLinkActive="active" ariaCurrentWhenActive="page">Devices</a>
+        </li>
+        <li>
+          <a routerLink="/support" routerLinkActive="active" ariaCurrentWhenActive="page">Support</a>
+        </li>
+      </ul>
+    </mat-drawer>
+  
+    <div>
+      <button type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon aria-hidden="false" aria-label="Menu icon" fontIcon="more_vert"></mat-icon>
+      </button>
+    </div>
+  
+  </mat-drawer-container>

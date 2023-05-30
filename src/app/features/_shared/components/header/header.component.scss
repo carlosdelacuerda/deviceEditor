@@ -1,0 +1,28 @@
+@import '../../../../../assets/styles/guidestyles.scss';
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    padding: $size;
+    background-color: #0277BD;
+    .logo {
+        width: $size*20;
+        img {
+            width: 100%;
+        }
+    }
+    .title {
+        width: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0 auto;
+        h1 {
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            font-weight: bold;
+            color: white;
+        }
+    }
+}

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DevicesService } from '../../services/devices.service';
 import { DeviceInterface } from '../../interfaces/devices.interface';
 import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-devices-list',
   templateUrl: './devices-list.component.html',
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
 })
 export class DevicesListComponent implements OnInit {
 
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+
   deviceList: DeviceInterface[] = [];
+  dataSource: any;
   tagsList = [];
   displayedColumns: string[] = ['name', 'tags', 'description'];
 

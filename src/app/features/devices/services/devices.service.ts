@@ -16,4 +16,9 @@ export class DevicesService {
   public getAllDevices(): Observable<DeviceInterface[]> {
     return this.http.get<DeviceInterface[]>('../../../assets/data/devices.json');
   }
+
+  public postDevice(device:DeviceInterface): Observable<DeviceInterface>  {
+    return this.http.post<DeviceInterface>('https://exampleurl.com', device)
+  }
+
 }

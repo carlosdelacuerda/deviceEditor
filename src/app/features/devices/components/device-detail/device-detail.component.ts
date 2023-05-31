@@ -4,7 +4,7 @@ import { DeviceInterface } from '../../interfaces/devices.interface';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
-import { of, map, filter } from 'rxjs';
+import { DevicesService } from '../../services/devices.service';
 
 export interface Tag {
   name: string;
@@ -17,7 +17,10 @@ export interface Tag {
 })
 export class DeviceDetailComponent implements OnInit {
 
-  tags: Tag[] = []
+  tags: Tag[] = [];
+  getDevice: any;
+  name: string = '';
+  description: string = '';
 
   device: DeviceInterface = {
     name: '',
@@ -30,17 +33,21 @@ export class DeviceDetailComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private deviceService: DevicesService
   ){
     this.receiverParameters()
   }
 
   ngOnInit(): void {
-    this.buildForm()
-    const getTags:any = this.device
-    getTags.device.tags.forEach((tag:string) => {
+    
+    this.getDevice = this.device;
+    this.name = this.getDevice.device.name;
+    this.description = this.getDevice.device.description;
+    this.getDevice.device.tags.forEach((tag:string) => {
       this.tags.push({name: tag})
     });
+    this.buildForm();
   }
 
   receiverParameters() {
@@ -49,8 +56,9 @@ export class DeviceDetailComponent implements OnInit {
 
   public buildForm() {
     this.formGroup = this.formBuilder.group({
-      name: new FormControl('', [Validators.required, Validators.email]),
-      tags: new FormControl('', [Validators.required, Validators.minLength(4)]),    
+      name: new FormControl(this.name, [Validators.required]),
+      description: new FormControl(this.description),
+      tags: new FormControl('')  
     });
   }
 
@@ -95,7 +103,7 @@ export class DeviceDetailComponent implements OnInit {
 
 
   saveDevice() {
-
+    this.deviceService.postDevice(this.formGroup.value).subscribe()
   }
 
 }

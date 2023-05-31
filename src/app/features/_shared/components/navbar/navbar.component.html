@@ -1,14 +1,23 @@
-<mat-drawer-container autosize>
-    <mat-drawer #drawer mode="side">
+<mat-drawer-container autosize hasBackdrop="false">
+    <mat-drawer #drawer mode="side" opened="true" disableClose="true" >
       <ul>
         <li>
-          <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
+          <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <mat-icon aria-hidden="false" aria-label="Home icon" fontIcon="home"></mat-icon>
+            Home
+          </a>
         </li>
         <li>
-          <a routerLink="/devices" routerLinkActive="active" ariaCurrentWhenActive="page">Devices</a>
+          <a routerLink="/devices" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <mat-icon aria-hidden="false" aria-label="Device icon" fontIcon="phone_iphone"></mat-icon>
+            Devices
+          </a>
         </li>
         <li>
-          <a routerLink="/support" routerLinkActive="active" ariaCurrentWhenActive="page">Support</a>
+          <a routerLink="/support" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <mat-icon aria-hidden="false" aria-label="Support icon" fontIcon="support_agent"></mat-icon>
+            Support
+          </a>
         </li>
       </ul>
     </mat-drawer>

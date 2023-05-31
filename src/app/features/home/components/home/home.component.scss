@@ -1,0 +1,17 @@
+@import '../../../../../assets/styles/guidestyles.scss';
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    position: fixed;
+    h2 {
+        width: 100%;
+        text-align: center;
+        padding: $size*2;
+        margin-top: -$size*4;
+    }
+}

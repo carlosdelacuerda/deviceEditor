@@ -1,3 +1,18 @@
+@import '../../../../../assets/styles/guidestyles.scss';
+
+th {
+    background-color: #607D8B !important;
+    color: white;
+}
 tr {
     cursor: pointer;
+}
+.red {
+    background-color: #F44336;
+}
+.yellow {
+    background-color: #FFD740;
+}
+.green {
+    background-color: #009688;
 }

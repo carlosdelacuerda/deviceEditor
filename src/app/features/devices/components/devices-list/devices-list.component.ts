@@ -3,6 +3,7 @@ import { DevicesService } from '../../services/devices.service';
 import { DeviceInterface } from '../../interfaces/devices.interface';
 import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-devices-list',
   templateUrl: './devices-list.component.html',
@@ -10,28 +11,28 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class DevicesListComponent implements OnInit {
 
-  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
-  deviceList: DeviceInterface[] = [];
-  dataSource: any;
   tagsList = [];
-  displayedColumns: string[] = ['name', 'tags', 'description'];
+  displayedColumns: string[] = ['name', 'tags', 'description', 'light'];
+  dataSource = new MatTableDataSource();
+
+  @ViewChild('paginator') paginator: MatPaginator;
 
   constructor(
     private devicesService: DevicesService,
     private router: Router
-  ){
+  ){}
 
-  }
   ngOnInit(): void {
     this.devicesService.getAllDevices().subscribe(data => {
-      this.deviceList = data;
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
     })
   }
 
   goToDetail(device: DeviceInterface) {
     // remove white space to create a friendly url
-    const name = device.name.replace(/\s+/g, '');
+    const name = device.name.replace(/\s+/g, '-');
     // navigate to detail page
     this.router.navigate(['/devices/' + name + '/'], {
       // send the information of the device

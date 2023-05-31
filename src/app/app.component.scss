@@ -1,9 +1,19 @@
+app-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1 ;
+}
 app-navbar {
-    height: 100%;
+    top: 86px;
+    height: calc(100% - 86px);
     width: auto;
     position: fixed;
     z-index: 1;
 }
 .outlet-container {
+    margin-top: 86px;
     padding-left: 36px;
+    padding-bottom: 16px;
+    z-index: 0;
 }

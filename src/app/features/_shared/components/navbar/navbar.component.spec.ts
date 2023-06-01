@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavbarComponent } from './navbar.component';
+import { MatDrawerContainer, MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -8,7 +11,12 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [ NavbarComponent, MatDrawerContainer ],
+      imports: [
+        MatSidenavModule,
+        BrowserAnimationsModule,
+        MatIconModule
+      ]
     })
     .compileComponents();
 

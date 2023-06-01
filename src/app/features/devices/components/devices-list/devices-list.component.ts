@@ -30,7 +30,7 @@ export class DevicesListComponent implements OnInit {
     })
   }
 
-  goToDetail(device: DeviceInterface) {
+  goToDetail(device: any) {
     // remove white space to create a friendly url
     const name = device.name.replace(/\s+/g, '-');
     // navigate to detail page
